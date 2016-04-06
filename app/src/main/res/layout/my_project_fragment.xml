@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Opp_Coo.Opp_activity"
+    android:descendantFocusability="blocksDescendants">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_my_project_activity"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="6sp"
+        android:background="#f1e7e7"
+        android:layout_marginBottom="60dp">
+
+    </ListView>
+
+</RelativeLayout>
