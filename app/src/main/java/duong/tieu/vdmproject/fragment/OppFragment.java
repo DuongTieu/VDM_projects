@@ -15,7 +15,7 @@ import java.util.List;
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.activities.NewsActivity;
 import duong.tieu.vdmproject.adapter.OppAdapter;
-import duong.tieu.vdmproject.contents.OppEle;
+import duong.tieu.vdmproject.models.OppEle;
 
 /**
  * Created by duong on 06/04/2016.

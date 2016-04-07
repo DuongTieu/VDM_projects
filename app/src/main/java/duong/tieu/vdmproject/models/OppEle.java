@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.contents;
+package duong.tieu.vdmproject.models;
 
 /**
  * Created by duong on 05/04/2016.

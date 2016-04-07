@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.contents.ContactsEle;
+import duong.tieu.vdmproject.models.ContactsEle;
 
 /**
  * Created by duong on 06/04/2016.

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.contents.MessEle;
+import duong.tieu.vdmproject.models.MessEle;
 
 /**
  * Created by duong on 05/04/2016.

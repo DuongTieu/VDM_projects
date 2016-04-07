@@ -14,7 +14,7 @@ import java.util.List;
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.activities.NewsActivity;
 import duong.tieu.vdmproject.adapter.ContactsAdapter;
-import duong.tieu.vdmproject.contents.ContactsEle;
+import duong.tieu.vdmproject.models.ContactsEle;
 import duong.tieu.vdmproject.notifications.Notifications;
 
 /**

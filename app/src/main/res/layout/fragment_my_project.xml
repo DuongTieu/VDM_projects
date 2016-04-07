@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
-    tools:context=".contents.Opp_activity">
+    tools:context=".models.Opp_activity">
 
     <ListView
         android:id="@+id/lv_my_project_activity"

@@ -1,11 +1,11 @@
-package duong.tieu.vdmproject.contents;
+package duong.tieu.vdmproject.models;
 
 /**
  * Created by duong on 06/04/2016.
  */
 public class ContactsEle {
-    String userName;
-    int userAva;
+    private String userName;
+    private int userAva;
 
     public String getUserName() {
         return userName;

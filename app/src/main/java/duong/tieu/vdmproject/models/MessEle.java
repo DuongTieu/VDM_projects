@@ -1,11 +1,11 @@
-package duong.tieu.vdmproject.contents;
+package duong.tieu.vdmproject.models;
 
 /**
  * Created by duong on 05/04/2016.
  */
 public class MessEle {
-    String userName, userText;
-    int ava;
+    private String userName, userText;
+    private int ava;
     public String getUserName() {
         return userName;
     }

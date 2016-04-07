@@ -15,7 +15,7 @@ import java.util.List;
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.activities.SendMessActivity;
 import duong.tieu.vdmproject.adapter.MessAdapter;
-import duong.tieu.vdmproject.contents.MessEle;
+import duong.tieu.vdmproject.models.MessEle;
 
 /**
  * Created by duong on 06/04/2016.
