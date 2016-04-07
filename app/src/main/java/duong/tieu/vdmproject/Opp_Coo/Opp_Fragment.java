@@ -1,5 +1,6 @@
 package duong.tieu.vdmproject.Opp_Coo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import duong.tieu.vdmproject.Core.Opp_Adapter;
+import duong.tieu.vdmproject.News_Activity;
 import duong.tieu.vdmproject.R;
 
 /**
@@ -52,7 +53,13 @@ public class Opp_Fragment extends Fragment {
         lv_opp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "postion is: " + position, Toast.LENGTH_SHORT).show();
+                //go to news activity
+                Intent senData = new Intent(getActivity(), News_Activity.class);
+                Bundle data = new Bundle();
+                data.putInt("position", position);
+                senData.putExtra("user_position", data);
+                startActivity(senData);
+
             }
         });
 

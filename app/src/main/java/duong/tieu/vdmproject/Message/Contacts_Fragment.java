@@ -54,11 +54,6 @@ public class Contacts_Fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent senData = new Intent(getActivity(), News_Activity.class);
-                Bundle data = new Bundle();
-                data.putInt("position", position);
-                senData.putExtra("user_position", data);
-                startActivity(senData);
 
             }
         });

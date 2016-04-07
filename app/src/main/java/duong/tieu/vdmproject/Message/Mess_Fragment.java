@@ -1,5 +1,6 @@
 package duong.tieu.vdmproject.Message;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,13 @@ public class Mess_Fragment extends Fragment {
         lv_messae.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "position " + position, Toast.LENGTH_SHORT).show();
+
+                Intent send_mess = new Intent(getActivity().getBaseContext(), Send_Mess_Activity.class);
+                Bundle data = new Bundle();
+                data.putInt("position", position);
+                send_mess.putExtra("user_position", data);
+                startActivity(send_mess);
+
             }
         });
         return view;

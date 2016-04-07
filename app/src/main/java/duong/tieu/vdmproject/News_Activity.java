@@ -1,7 +1,7 @@
 package duong.tieu.vdmproject;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -12,14 +12,15 @@ import android.widget.Toast;
 public class News_Activity extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
 
 
-        Bundle get_user_position = getIntent().getExtras();
+        Intent i = getIntent();
+        Bundle bundle = i.getBundleExtra("user_position");
 
-        Toast.makeText(News_Activity.this, "   " + get_user_position.getInt("position"), Toast.LENGTH_SHORT).show();
-        Log.d("aaaa", " "+ get_user_position.getInt("position"));
+        Toast.makeText(getApplicationContext(), "   " + bundle.getInt("position"), Toast.LENGTH_SHORT).show();
+        Log.d("aaaa", " "+ bundle.getInt("position"));
     }
 }

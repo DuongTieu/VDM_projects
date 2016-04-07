@@ -30,6 +30,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Message.Send_Mess_Activity">
+
+        </activity>
+
     </application>
 
 </manifest>
