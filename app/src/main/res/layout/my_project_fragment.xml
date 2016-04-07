@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Opp_Coo.Opp_activity"
-    android:descendantFocusability="blocksDescendants">
+    android:descendantFocusability="blocksDescendants"
+    tools:context=".contents.Opp_activity">
 
     <ListView
+        android:id="@+id/lv_my_project_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lv_my_project_activity"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="6sp"
+        android:layout_marginBottom="60dp"
         android:background="#f1e7e7"
-        android:layout_marginBottom="60dp">
+        android:divider="@android:color/transparent"
+        android:dividerHeight="6sp">
 
     </ListView>
 

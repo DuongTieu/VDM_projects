@@ -1,10 +1,12 @@
-package duong.tieu.vdmproject;
+package duong.tieu.vdmproject.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
+
+import duong.tieu.vdmproject.R;
 
 /**
  * Created by duong on 06/04/2016.

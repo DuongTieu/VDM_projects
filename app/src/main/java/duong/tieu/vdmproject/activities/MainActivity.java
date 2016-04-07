@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject;
+package duong.tieu.vdmproject.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,11 @@ import android.widget.ViewFlipper;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
-import duong.tieu.vdmproject.Core.ViewPagerAdapter;
-import duong.tieu.vdmproject.Message.Message_Activity;
-import duong.tieu.vdmproject.Opp_Coo.Interest_Fragment;
-import duong.tieu.vdmproject.Opp_Coo.My_Project_Fragment;
-import duong.tieu.vdmproject.Opp_Coo.Opp_Fragment;
+import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
+import duong.tieu.vdmproject.fragment.Interest_Fragment;
+import duong.tieu.vdmproject.fragment.My_Project_Fragment;
+import duong.tieu.vdmproject.fragment.Opp_Fragment;
 
 public class MainActivity extends AppCompatActivity {
 

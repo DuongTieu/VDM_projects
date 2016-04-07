@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Message;
+package duong.tieu.vdmproject.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.contents.MessEle;
 
 /**
  * Created by duong on 05/04/2016.

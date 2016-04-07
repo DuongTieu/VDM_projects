@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Message;
+package duong.tieu.vdmproject.contents;
 
 /**
  * Created by duong on 06/04/2016.

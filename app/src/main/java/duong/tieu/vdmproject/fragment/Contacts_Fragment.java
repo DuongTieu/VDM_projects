@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Message;
+package duong.tieu.vdmproject.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,8 +11,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import duong.tieu.vdmproject.Core.Notifications;
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.adapter.ContactsAdapter;
+import duong.tieu.vdmproject.contents.ContactsEle;
+import duong.tieu.vdmproject.notifications.Notifications;
 
 /**
  * Created by duong on 06/04/2016.

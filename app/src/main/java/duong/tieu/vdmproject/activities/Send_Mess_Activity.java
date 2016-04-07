@@ -1,4 +1,8 @@
-package duong.tieu.vdmproject.Message;
+package duong.tieu.vdmproject.activities;
+
+/**
+ * Created by duong on 07/04/2016.
+ */
 
 import android.content.Intent;
 import android.os.Bundle;

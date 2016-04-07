@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Core;
+package duong.tieu.vdmproject.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

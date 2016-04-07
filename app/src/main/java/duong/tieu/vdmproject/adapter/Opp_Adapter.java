@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Core;
+package duong.tieu.vdmproject.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import duong.tieu.vdmproject.Opp_Coo.OppEle;
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.contents.OppEle;
 
 /**
  * Created by duong on 06/04/2016.

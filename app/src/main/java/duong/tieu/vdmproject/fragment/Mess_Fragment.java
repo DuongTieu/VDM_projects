@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Message;
+package duong.tieu.vdmproject.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,22 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.activities.Send_Mess_Activity;
+import duong.tieu.vdmproject.adapter.MessAdapter;
+import duong.tieu.vdmproject.contents.MessEle;
 
 /**
  * Created by duong on 06/04/2016.
  */
 public class Mess_Fragment extends Fragment {
 
+    String[] userName = {"a", "b", "c", "d", "e", "f", "g", "h", "k"};
+    String[] userMess = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     private ListView lv_messae;
-
     public Mess_Fragment() {
         // Required empty public constructor
     }
-
-    String [] userName = {"a", "b","c","d","e","f","g","h","k"};
-    String [] userMess = {"1", "2","3","4","5","6","7","8","9"};
 //    int defaulUserAva = R.drawable.g;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

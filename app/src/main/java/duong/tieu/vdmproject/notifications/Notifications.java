@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Core;
+package duong.tieu.vdmproject.notifications;
 
 
 import android.annotation.TargetApi;
@@ -13,16 +13,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
-import duong.tieu.vdmproject.News_Activity;
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.activities.News_Activity;
 
 /**
  * Created by duong on 07/04/2016.
  */
 public class Notifications {
 
-    private String title, constents;
     Context context;
+    private String title, constents;
     public Notifications(){}
 
     public Notifications(Context context, String title, String constents){

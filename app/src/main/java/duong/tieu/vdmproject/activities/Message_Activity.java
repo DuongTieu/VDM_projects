@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Message;
+package duong.tieu.vdmproject.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,11 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import duong.tieu.vdmproject.Core.ViewPagerAdapter;
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
+import duong.tieu.vdmproject.fragment.Contacts_Fragment;
+import duong.tieu.vdmproject.fragment.Mess_Fragment;
 
 /**
- * Created by duong on 05/04/2016.
+ * Created by duong on 07/04/2016.
  */
 public class Message_Activity extends AppCompatActivity {
 
@@ -40,4 +42,9 @@ public class Message_Activity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 }

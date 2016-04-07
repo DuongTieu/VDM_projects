@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.Opp_Coo;
+package duong.tieu.vdmproject.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,13 +12,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import duong.tieu.vdmproject.Core.Opp_Adapter;
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.adapter.Opp_Adapter;
+import duong.tieu.vdmproject.contents.OppEle;
 
 /**
  * Created by duong on 06/04/2016.
  */
-public class My_Project_Fragment extends Fragment {
+public class Interest_Fragment extends Fragment {
 
     String [] contents = {"duong","afaaaa","aaafaa","aaaa4a","aaaaad"};
     int [] img = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e };
