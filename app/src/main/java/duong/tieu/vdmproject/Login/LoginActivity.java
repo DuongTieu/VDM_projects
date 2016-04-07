@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import duong.tieu.vdmproject.MainActivity;
 import duong.tieu.vdmproject.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,7 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        
+
+
+//        btn_click
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -38,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //goto signup layout
         _signupLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -61,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
+
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
@@ -92,6 +97,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
+
+
+        //todo activity
+
+        Intent goMain = new Intent(this, MainActivity.class);
+        startActivity(goMain);
+
         finish();
     }
 

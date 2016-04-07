@@ -1,6 +1,5 @@
 package duong.tieu.vdmproject.Message;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import duong.tieu.vdmproject.News_Activity;
+import duong.tieu.vdmproject.Core.Notifications;
 import duong.tieu.vdmproject.R;
 
 /**
@@ -53,7 +52,7 @@ public class Contacts_Fragment extends Fragment {
         lv_contacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                new Notifications(getActivity().getBaseContext(), "Ban moi nan vao 1 item", " vi tri la " + position).addNotification();
 
             }
         });
