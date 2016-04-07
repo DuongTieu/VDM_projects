@@ -16,9 +16,9 @@ import com.roughike.bottombar.OnMenuTabClickListener;
 
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
-import duong.tieu.vdmproject.fragment.Interest_Fragment;
-import duong.tieu.vdmproject.fragment.My_Project_Fragment;
-import duong.tieu.vdmproject.fragment.Opp_Fragment;
+import duong.tieu.vdmproject.fragment.InterestFragment;
+import duong.tieu.vdmproject.fragment.MyProjectFragment;
+import duong.tieu.vdmproject.fragment.OppFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Opp_Fragment(), "Cơ hội mới");
-        adapter.addFragment(new My_Project_Fragment(), "Đang quan tâm");
-        adapter.addFragment(new Interest_Fragment(), "Dự án của tôi");
+        adapter.addFragment(new OppFragment(), "Cơ hội mới");
+        adapter.addFragment(new MyProjectFragment(), "Đang quan tâm");
+        adapter.addFragment(new InterestFragment(), "Dự án của tôi");
         viewPager.setAdapter(adapter);
     }
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.bb_menu_nearby:
                 message += "Tin nhắn";
                 //go to MainActivity
-                Intent mess = new Intent(this, Message_Activity.class);
+                Intent mess = new Intent(this, MessageActivity.class);
                 startActivity(mess);
 
                 Log.d("test main", "start activity");

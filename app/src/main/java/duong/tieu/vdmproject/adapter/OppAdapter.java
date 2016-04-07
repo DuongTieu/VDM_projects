@@ -17,12 +17,12 @@ import duong.tieu.vdmproject.contents.OppEle;
 /**
  * Created by duong on 06/04/2016.
  */
-public class Opp_Adapter extends ArrayAdapter<OppEle> {
+public class OppAdapter extends ArrayAdapter<OppEle> {
     private Context context;
     private int resID;
     private List<OppEle> object;
 
-    public Opp_Adapter(Context context, int resource, List<OppEle> objects) {
+    public OppAdapter(Context context, int resource, List<OppEle> objects) {
         super(context, resource, objects);
 
         this.context = context;

@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.adapter.Opp_Adapter;
+import duong.tieu.vdmproject.adapter.OppAdapter;
 import duong.tieu.vdmproject.contents.OppEle;
 
 /**
  * Created by duong on 06/04/2016.
  */
-public class Interest_Fragment extends Fragment {
+public class MyProjectFragment extends Fragment {
 
     String [] contents = {"duong","afaaaa","aaafaa","aaaa4a","aaaaad"};
     int [] img = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e };
@@ -31,7 +31,7 @@ public class Interest_Fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.opp_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_opp, container, false);
         List<OppEle> listOpp = new ArrayList<>();
 
         for(int i = 0; i < name.length; i++){
@@ -47,7 +47,7 @@ public class Interest_Fragment extends Fragment {
         }
 
         lv_opp = (ListView) view.findViewById(R.id.lv_opp_fragment);
-        Opp_Adapter adapter = new Opp_Adapter(getContext(), R.layout.opp_row_item, listOpp);
+        OppAdapter adapter = new OppAdapter(getContext(), R.layout.row_item_opp, listOpp);
         lv_opp.setAdapter(adapter);
 
         lv_opp.setOnItemClickListener(new AdapterView.OnItemClickListener() {

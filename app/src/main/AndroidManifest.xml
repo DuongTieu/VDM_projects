@@ -30,21 +30,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.Message_Activity">
+        <activity android:name=".activities.MessageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.News_Activity">
+        <activity android:name=".activities.NewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.Send_Mess_Activity">
+        <activity android:name=".activities.SendMessActivity">
 
         </activity>
 

@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.activities.News_Activity;
 
 /**
  * Created by duong on 07/04/2016.
@@ -24,11 +23,12 @@ public class Notifications {
     Context context;
     private String title, constents;
     public Notifications(){}
-
-    public Notifications(Context context, String title, String constents){
+    Class targetClass;
+    public Notifications(Context context,Class targetClass, String title, String constents){
         this.title = title;
         this.constents = constents;
         this.context = context;
+        this.targetClass = targetClass;
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -39,13 +39,13 @@ public class Notifications {
                 .setContentTitle(title)
                 .setContentText(constents);
 
-        Intent goMain = new Intent(context, News_Activity.class);
+        Intent goMain = new Intent(context, targetClass);
         Bundle data = new Bundle();
         data.putInt("position", 123);
         goMain.putExtra("user_position", data);
 
         TaskStackBuilder stackBuidle = TaskStackBuilder.create(context);
-        stackBuidle.addParentStack(News_Activity.class);
+        stackBuidle.addParentStack(targetClass);
         stackBuidle.addNextIntent(goMain);
 
         PendingIntent resultPedingIntent =

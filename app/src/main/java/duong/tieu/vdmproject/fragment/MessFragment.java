@@ -13,22 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.activities.Send_Mess_Activity;
+import duong.tieu.vdmproject.activities.SendMessActivity;
 import duong.tieu.vdmproject.adapter.MessAdapter;
 import duong.tieu.vdmproject.contents.MessEle;
 
 /**
  * Created by duong on 06/04/2016.
  */
-public class Mess_Fragment extends Fragment {
+public class MessFragment extends Fragment {
 
     String[] userName = {"a", "b", "c", "d", "e", "f", "g", "h", "k"};
     String[] userMess = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     private ListView lv_messae;
-    public Mess_Fragment() {
+    public MessFragment() {
         // Required empty public constructor
     }
-//    int defaulUserAva = R.drawable.g;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,7 @@ public class Mess_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.mess_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_mess, container, false);
         List<MessEle> mListMessEle = new ArrayList<MessEle>();
 
         for(int i = 0;  i <userMess.length; i++){
@@ -51,14 +50,14 @@ public class Mess_Fragment extends Fragment {
         }
 
         lv_messae = (ListView) view.findViewById(R.id.lv_message);
-        MessAdapter adapter = new MessAdapter(getContext(), R.layout.mess_row_item, mListMessEle);
+        MessAdapter adapter = new MessAdapter(getContext(), R.layout.row_item_mess, mListMessEle);
         lv_messae.setAdapter(adapter);
 
         lv_messae.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent send_mess = new Intent(getActivity().getBaseContext(), Send_Mess_Activity.class);
+                Intent send_mess = new Intent(getActivity().getBaseContext(), SendMessActivity.class);
                 Bundle data = new Bundle();
                 data.putInt("position", position);
                 send_mess.putExtra("user_position", data);

@@ -11,12 +11,12 @@ import duong.tieu.vdmproject.R;
 /**
  * Created by duong on 06/04/2016.
  */
-public class News_Activity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_activity);
+        setContentView(R.layout.activity_news);
 
 
         Intent i = getIntent();

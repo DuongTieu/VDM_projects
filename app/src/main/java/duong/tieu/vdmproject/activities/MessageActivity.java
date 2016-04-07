@@ -9,13 +9,13 @@ import android.util.Log;
 
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
-import duong.tieu.vdmproject.fragment.Contacts_Fragment;
-import duong.tieu.vdmproject.fragment.Mess_Fragment;
+import duong.tieu.vdmproject.fragment.ContactsFragment;
+import duong.tieu.vdmproject.fragment.MessFragment;
 
 /**
  * Created by duong on 07/04/2016.
  */
-public class Message_Activity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity {
 
     private static final String TAG = "go to";
     private TabLayout tabLayout;
@@ -24,7 +24,7 @@ public class Message_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mess_activity);
+        setContentView(R.layout.activity_mess);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -37,8 +37,8 @@ public class Message_Activity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Mess_Fragment(), "Tin nhắn");
-        adapter.addFragment(new Contacts_Fragment(), "Danh bạ");
+        adapter.addFragment(new MessFragment(), "Tin nhắn");
+        adapter.addFragment(new ContactsFragment(), "Danh bạ");
         viewPager.setAdapter(adapter);
     }
 
