@@ -25,6 +25,7 @@ public class MessFragment extends Fragment {
     String[] userName = {"a", "b", "c", "d", "e", "f", "g", "h", "k"};
     String[] userMess = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     private ListView lv_messae;
+
     public MessFragment() {
         // Required empty public constructor
     }
@@ -41,7 +42,7 @@ public class MessFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_mess, container, false);
         List<MessEle> mListMessEle = new ArrayList<MessEle>();
 
-        for(int i = 0;  i <userMess.length; i++){
+        for (int i = 0; i < userMess.length; i++) {
             MessEle item = new MessEle();
             item.setUserName(userName[i]);
             item.setUserText(userMess[i]);

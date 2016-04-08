@@ -17,39 +17,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.SignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.MessageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
-
         <activity android:name=".activities.NewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
             </intent-filter>
         </activity>
-
-        <activity android:name=".activities.SendMessActivity">
-
-        </activity>
-
+        <activity android:name=".activities.SendMessActivity"></activity>
+        <activity android:name=".activities.LayoutMessageActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -18,67 +17,62 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:orientation="horizontal"
+                android:layout_marginRight="18dp"
                 android:gravity="center"
-                android:layout_marginRight="18dp">
+                android:orientation="horizontal">
 
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="#50c1e9"
-                    android:src="@drawable/timkiem"/>
+                    android:src="@drawable/ic_search" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:textAllCaps="true"
+                    android:gravity="center"
                     android:text="Cơ hội hợp tác"
                     android:textAlignment="center"
-                    android:gravity="center"/>
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
-                <ImageButton
-                    android:src="@mipmap/edit_launcher"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    />
+                    android:src="@drawable/ic_edit" />
             </LinearLayout>
 
         </android.support.v7.widget.Toolbar>
-       
+
 
         <android.support.design.widget.TabLayout
-            android:background="#FFF"
             android:id="@+id/tabs"
-            app:tabTextColor="#303030"
-            app:tabSelectedTextColor="#303030"
             android:layout_width="match_parent"
-            app:tabIndicatorColor="#50c1e9"
             android:layout_height="wrap_content"
+            android:background="#FFF"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="#50c1e9"
             app:tabMode="fixed"
-            app:tabGravity="fill" />
+            app:tabSelectedTextColor="#303030"
+            app:tabTextColor="#303030" />
 
     </android.support.design.widget.AppBarLayout>
 
 
-
-
-        <android.support.v4.view.ViewPager
+    <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-
-   
 </android.support.design.widget.CoordinatorLayout>

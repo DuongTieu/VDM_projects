@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.getproject.DGetProject;
+import duong.tieu.vdmproject.models.DGetProject;
 
 /**
  * Created by duong on 06/04/2016.
@@ -41,7 +41,7 @@ public class AdapterProject extends ArrayAdapter<DGetProject> {
         ImageView img_ava = (ImageView) view.findViewById(R.id.img_opp_ava);
         //button by Linear
         LinearLayout btn_Care = (LinearLayout) view.findViewById(R.id.btn_opp_care);
-        LinearLayout btn_Cancel  = (LinearLayout) view.findViewById(R.id.btn_opp_cancel);
+        LinearLayout btn_Cancel = (LinearLayout) view.findViewById(R.id.btn_opp_cancel);
 
 
         DGetProject item = mObject.get(position);

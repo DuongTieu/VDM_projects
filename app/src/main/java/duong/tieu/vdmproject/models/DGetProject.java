@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.getproject;
+package duong.tieu.vdmproject.models;
 
 /**
  * Created by Nhahv on 4/6/2016.

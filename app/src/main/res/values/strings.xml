@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VDM project</string>
+    <string name="login">Login</string>
+    <string name="question">No account yet? Create one</string>
+    <string name="message_send">Messages</string>
+    <string name="message_elipses">typing message</string>
 </resources>

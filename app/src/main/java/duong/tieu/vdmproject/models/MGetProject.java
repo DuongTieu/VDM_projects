@@ -1,4 +1,4 @@
-package duong.tieu.vdmproject.getproject;
+package duong.tieu.vdmproject.models;
 
 import java.util.List;
 

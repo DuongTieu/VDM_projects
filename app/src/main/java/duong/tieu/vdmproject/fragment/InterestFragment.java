@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.adapter.AdapterProject;
-import duong.tieu.vdmproject.getproject.DGetProject;
-import duong.tieu.vdmproject.getproject.MGetProject;
+import duong.tieu.vdmproject.models.DGetProject;
+import duong.tieu.vdmproject.models.MGetProject;
 import duong.tieu.vdmproject.models.Models;
 import duong.tieu.vdmproject.services.MyServices;
 
@@ -31,11 +31,13 @@ public class InterestFragment extends Fragment {
     private ListView mLV_interst;
     private ArrayList<DGetProject> mListProject = new ArrayList<>();
     private ArrayList<DGetProject> mListProjectTemp = new ArrayList<>();
+    private View mView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_opp, container, false);
-        mLV_interst = (ListView) view.findViewById(R.id.lv_opp_fragment);
+
+        mView = inflater.inflate(R.layout.fragment_opp, container, false);
+        mLV_interst = (ListView) mView.findViewById(R.id.lv_opp_fragment);
 
         mAdapterProject = new AdapterProject(getContext(), R.layout.row_item_opp, mListProject);
         mLV_interst.setAdapter(mAdapterProject);
@@ -54,7 +56,7 @@ public class InterestFragment extends Fragment {
             mAdapterProject.notifyDataSetChanged();
         }
 
-        return view;
+        return mView;
     }
 
     private class GetProject extends AsyncTask<String, String, String> {

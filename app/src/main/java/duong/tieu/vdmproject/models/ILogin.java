@@ -5,6 +5,7 @@ package duong.tieu.vdmproject.models;
  */
 public class ILogin {
     private String status;
+    private DLogin data;
 
     public ILogin() {
     }
@@ -15,5 +16,13 @@ public class ILogin {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public DLogin getData() {
+        return data;
+    }
+
+    public void setData(DLogin data) {
+        this.data = data;
     }
 }

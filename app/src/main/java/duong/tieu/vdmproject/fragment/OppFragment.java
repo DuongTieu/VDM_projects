@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.activities.NewsActivity;
 import duong.tieu.vdmproject.adapter.AdapterProject;
-import duong.tieu.vdmproject.getproject.DGetProject;
-import duong.tieu.vdmproject.getproject.MGetProject;
+import duong.tieu.vdmproject.models.DGetProject;
+import duong.tieu.vdmproject.models.MGetProject;
 import duong.tieu.vdmproject.models.Models;
 import duong.tieu.vdmproject.services.MyServices;
 

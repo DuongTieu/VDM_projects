@@ -20,7 +20,7 @@ import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
 import duong.tieu.vdmproject.fragment.InterestFragment;
 import duong.tieu.vdmproject.fragment.MyProjectFragment;
 import duong.tieu.vdmproject.fragment.OppFragment;
-import duong.tieu.vdmproject.getproject.DGetProject;
+import duong.tieu.vdmproject.models.DGetProject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomBar mBottomBar;
 
     private ArrayList<DGetProject> mListProjects = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         // set đưuọc nhiêu màu khac nhau cho mỗi item
         mBottomBar.mapColorForTab(0, ContextCompat.getColor(this, R.color.colorPrimary));
         mBottomBar.mapColorForTab(1, ContextCompat.getColor(this, R.color.colorPrimary));
-        mBottomBar.mapColorForTab(2,  ContextCompat.getColor(this, R.color.colorPrimary));
-        mBottomBar.mapColorForTab(3,  ContextCompat.getColor(this, R.color.colorPrimary));
-        mBottomBar.mapColorForTab(4,  ContextCompat.getColor(this, R.color.colorPrimary));
+        mBottomBar.mapColorForTab(2, ContextCompat.getColor(this, R.color.colorPrimary));
+        mBottomBar.mapColorForTab(3, ContextCompat.getColor(this, R.color.colorPrimary));
+        mBottomBar.mapColorForTab(4, ContextCompat.getColor(this, R.color.colorPrimary));
 
         // Thông báo tin nhắn .
         mBottomBar.makeBadgeForTabAt(1, 0xFFFF0000, 10).setAutoShowAfterUnSelection(true);
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.bb_menu_nearby:
                 //Todo
                 //go to MainActivity
-                Intent mess = new Intent(this, MessageActivity.class);
+                Intent mess = new Intent(this, LayoutMessageActivity.class);
                 startActivity(mess);
 
                 Log.d("test main", "start activity");
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         return message;
     }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

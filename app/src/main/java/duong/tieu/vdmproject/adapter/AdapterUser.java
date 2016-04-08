@@ -38,6 +38,11 @@ public class AdapterUser extends ArrayAdapter<DGetUser> {
         this.mListUser = mListUser;
     }
 
+    private class ViewHolder {
+        private ImageView mImgView;
+        private TextView mTvView;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -57,7 +62,7 @@ public class AdapterUser extends ArrayAdapter<DGetUser> {
 //        Bitmap bitmap = downloadImages(dGetUser.getAvatar());
 //        Bitmap bitmap1 = getResizedBitmap(bitmap, 50, 50);
 
-        viewHolder.mImgView.setImageResource(R.drawable.ic_avatar);
+        viewHolder.mImgView.setImageResource(R.drawable.ic_favorites);
         viewHolder.mTvView.setText(dGetUser.getUsername());
 
         return convertView;
@@ -88,7 +93,7 @@ public class AdapterUser extends ArrayAdapter<DGetUser> {
 
     public Bitmap getBitmapFromURL(String src) {
         try {
-            java.net.URL url = new java.net.URL(src);
+            URL url = new URL(src);
             HttpURLConnection connection = (HttpURLConnection) url
                     .openConnection();
             connection.setDoInput(true);
@@ -117,10 +122,5 @@ public class AdapterUser extends ArrayAdapter<DGetUser> {
                 matrix, false);
 
         return resizedBitmap;
-    }
-
-    private class ViewHolder {
-        private ImageView mImgView;
-        private TextView mTvView;
     }
 }

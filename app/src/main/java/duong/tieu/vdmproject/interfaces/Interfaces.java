@@ -2,7 +2,8 @@ package duong.tieu.vdmproject.interfaces;
 
 import java.util.ArrayList;
 
-import duong.tieu.vdmproject.getproject.DGetProject;
+import duong.tieu.vdmproject.models.DGetProject;
+
 
 /**
  * Created by duong on 08/04/2016.

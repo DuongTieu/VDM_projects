@@ -101,5 +101,8 @@ public class Models {
     public static final String LIKE_PROJECT = "like";
     public static final String UNLIKE_PROJECT = "unlike";
     public static final String ISACTIVE_PROJECT = "isactive";
-
+    public static final int MESSAGES_SEND = 0;
+    public static final int MESSAGE_RECEIVE = 1;
+    public static final String CHANNEL_ = "vsi_private_chat_";
+    public static final String DATA = "DATA";
 }
