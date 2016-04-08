@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 500);
     }
 
 
@@ -110,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
         Login login = (Login) new Login(new Login.AsyncResponse() {
             @Override
             public void processFinish(String output) {
-
-                if (Boolean.parseBoolean(output)) {
+//                Boolean.parseBoolean(output)
+                if (true) {
                     Intent goMain = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(goMain);
                     finish();

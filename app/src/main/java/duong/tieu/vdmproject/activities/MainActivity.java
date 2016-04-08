@@ -9,30 +9,30 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
+
+import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
 import duong.tieu.vdmproject.fragment.InterestFragment;
 import duong.tieu.vdmproject.fragment.MyProjectFragment;
 import duong.tieu.vdmproject.fragment.OppFragment;
+import duong.tieu.vdmproject.getproject.DGetProject;
 
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private BottomBar mBottomBar;
-    private ViewFlipper vf;
 
+    private ArrayList<DGetProject> mListProjects = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         // bottom bar
         mBottomBar = BottomBar.attach(this, savedInstanceState);
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         mBottomBar.makeBadgeForTabAt(1, 0xFFFF0000, 10).setAutoShowAfterUnSelection(true);
         mBottomBar.makeBadgeForTabAt(3, 0xFFFF0000, 13).setAutoShowAfterUnSelection(true);
 
-
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
@@ -77,21 +76,18 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-
-
     private String getMessage(int menuItemId, boolean isReselection) {
         String message = "Nội dung của";
 
         switch (menuItemId) {
             case R.id.bb_menu_recents:
-                message += "Hợp tác";
-
+                //Todo
                 break;
             case R.id.bb_menu_favorites:
-                message += "Bản tin";
+                //Todo
                 break;
             case R.id.bb_menu_nearby:
-                message += "Tin nhắn";
+                //Todo
                 //go to MainActivity
                 Intent mess = new Intent(this, MessageActivity.class);
                 startActivity(mess);
@@ -99,15 +95,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("test main", "start activity");
                 break;
             case R.id.bb_menu_friends:
-                message += "add";
+                //Todo
                 break;
             case R.id.bb_menu_food:
-                message += "more";
+                //Todo
                 break;
         }
 
         if (isReselection) {
-            message += "đã click 2 lần vào đây";
+            //Todo
         }
 
         return message;
@@ -116,8 +112,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        // Necessary to restore the BottomBar's state, otherwise we would
-        // lose the current tab on orientation change.
         mBottomBar.onSaveInstanceState(outState);
     }
 

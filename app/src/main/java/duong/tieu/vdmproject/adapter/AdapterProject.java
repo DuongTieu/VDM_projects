@@ -12,28 +12,28 @@ import android.widget.Toast;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.models.OppEle;
+import duong.tieu.vdmproject.getproject.DGetProject;
 
 /**
  * Created by duong on 06/04/2016.
  */
-public class OppAdapter extends ArrayAdapter<OppEle> {
-    private Context context;
-    private int resID;
-    private List<OppEle> object;
+public class AdapterProject extends ArrayAdapter<DGetProject> {
+    private Context mContext;
+    private int mResID;
+    private List<DGetProject> mObject;
 
-    public OppAdapter(Context context, int resource, List<OppEle> objects) {
+    public AdapterProject(Context context, int resource, List<DGetProject> objects) {
         super(context, resource, objects);
 
-        this.context = context;
-        this.resID =  resource;
-        this.object = objects;
+        this.mContext = context;
+        this.mResID = resource;
+        this.mObject = objects;
 
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = View.inflate(context, resID, null);
+        View view = View.inflate(mContext, mResID, null);
 
         TextView tv_user_name = (TextView) view.findViewById(R.id.tv_opp_user_name);
         TextView tv_content = (TextView) view.findViewById(R.id.tv_opp_content);
@@ -44,11 +44,11 @@ public class OppAdapter extends ArrayAdapter<OppEle> {
         LinearLayout btn_Cancel  = (LinearLayout) view.findViewById(R.id.btn_opp_cancel);
 
 
-        OppEle item = object.get(position);
-        tv_user_name.setText(item.getName());
-        tv_content.setText(item.getContents());
-        tv_date.setText(item.getMinute());
-        img_ava.setImageResource(item.getAva());
+        DGetProject item = mObject.get(position);
+        tv_user_name.setText(item.getUsername());
+        tv_content.setText(item.getContent());
+        tv_date.setText(item.getCdate());
+        //img_ava.setImageResource(item.getAva());
 
         //set onClick
         btn_Care.setOnClickListener(new View.OnClickListener() {

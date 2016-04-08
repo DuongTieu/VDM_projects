@@ -32,8 +32,15 @@ public class MessAdapter  extends ArrayAdapter<MessEle>{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        //change layout
+        View view = null;
 
-        View view = View.inflate(context, res, null);
+        int layout1 = R.layout.row_item_send_mess_left;
+        int layout2 = R.layout.row_item_send_mess_right;
+        if (position == 2) {
+            view = View.inflate(context, layout1, null);
+        } else
+            view = View.inflate(context, layout2, null);
 
         ImageView img_user_ava = (ImageView) view.findViewById(R.id.img_mess_user_ava);
         TextView tv_mess_user_name = (TextView) view.findViewById(R.id.tv_mess_user);
@@ -42,7 +49,7 @@ public class MessAdapter  extends ArrayAdapter<MessEle>{
         MessEle item = objects.get(position);
         tv_mess_latest_mes.setText(item.getUserText());
         tv_mess_user_name.setText(item.getUserName());
-        img_user_ava.setImageResource(item.getAva());
+//        img_user_ava.setImageResource(item.getAva());
 
         return view;
 

@@ -76,6 +76,12 @@ public class Models {
     public static final String GET_USER = "getUser";
 
     public static final String URL_GET_USER = "http://vsi.vietitech.com/api/mem_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getUser&username=admin";
+    public static final String URL_GET_PROJECT =
+            "http://vsi.vietitech.com/api/project_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getProject&username=";
+    public static final String URL_GET_PROJECT_CARE =
+            "http://vsi.vietitech.com/api/project_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getProjectCare&username=";
+    public static final String URL_GET_PROJECT_ITEM =
+            "http://vsi.vietitech.com/api/project_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getProjectItme&username=";
 
 
     // tao bang co hoi

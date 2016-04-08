@@ -50,6 +50,7 @@ public class MessFragment extends Fragment {
         }
 
         lv_messae = (ListView) view.findViewById(R.id.lv_message);
+
         MessAdapter adapter = new MessAdapter(getContext(), R.layout.row_item_mess, mListMessEle);
         lv_messae.setAdapter(adapter);
 

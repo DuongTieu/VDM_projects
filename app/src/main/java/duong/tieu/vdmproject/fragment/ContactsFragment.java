@@ -13,8 +13,10 @@ import java.util.List;
 
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.activities.NewsActivity;
+import duong.tieu.vdmproject.adapter.AdapterUser;
 import duong.tieu.vdmproject.adapter.ContactsAdapter;
 import duong.tieu.vdmproject.models.ContactsEle;
+import duong.tieu.vdmproject.models.DGetUser;
 import duong.tieu.vdmproject.notifications.Notifications;
 
 /**
@@ -22,9 +24,14 @@ import duong.tieu.vdmproject.notifications.Notifications;
  */
 public class ContactsFragment extends Fragment {
 
+    private final String URL_GET_USER =
+            "http://vsi.vietitech.com/api/member/mem_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getUser";
      ListView lv_contacts;
-
     String [] userName = {"a", "b","c","d","e","f","g","h","k"};
+
+    private ArrayList<DGetUser> mListUser = new ArrayList<>();
+    private AdapterUser mAdapter;
+
     public ContactsFragment() {
     }
 
@@ -40,12 +47,14 @@ public class ContactsFragment extends Fragment {
 
         List<ContactsEle> mListContacts = new ArrayList<ContactsEle>();
 
-        for(int i = 0; i < userName.length; i++){
-            ContactsEle item = new ContactsEle();
-            item.setUserName(userName[i]);
+        new GetAllUser().execute(URL_GET_USER);
 
-            mListContacts.add(item);
-        }
+//        for(int i = 0; i < userName.length; i++){
+//            ContactsEle item = new ContactsEle();
+//            item.setUserName(userName[i]);
+//
+//            mListContacts.add(item);
+//        }
 
         lv_contacts = (ListView) view.findViewById(R.id.lv_contacts);
         ContactsAdapter adapter = new ContactsAdapter(getContext(), R.layout.row_item_contacts, mListContacts);

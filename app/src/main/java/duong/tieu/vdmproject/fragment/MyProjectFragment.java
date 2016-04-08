@@ -1,5 +1,6 @@
 package duong.tieu.vdmproject.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,55 +10,77 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
-import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.adapter.OppAdapter;
-import duong.tieu.vdmproject.models.OppEle;
+import duong.tieu.vdmproject.adapter.AdapterProject;
+import duong.tieu.vdmproject.getproject.DGetProject;
+import duong.tieu.vdmproject.getproject.MGetProject;
+import duong.tieu.vdmproject.models.Models;
+import duong.tieu.vdmproject.services.MyServices;
 
 /**
  * Created by duong on 06/04/2016.
  */
 public class MyProjectFragment extends Fragment {
 
-    String [] contents = {"duong","afaaaa","aaafaa","aaaa4a","aaaaad"};
-    int [] img = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e };
-    String [] minute = {"1", "2", "3", "4", "5"};
-    String [] name = {"Duyen", "Duyen",  "Trang",  "Van",  "Mai" };
-
-    ListView lv_opp;
-
+    AdapterProject mAdapterProject;
+    private ListView mLv_myProject;
+    private ArrayList<DGetProject> mListProject = new ArrayList<>();
+    private ArrayList<DGetProject> mListProjectTemp = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_opp, container, false);
-        List<OppEle> listOpp = new ArrayList<>();
+        mLv_myProject = (ListView) view.findViewById(R.id.lv_opp_fragment);
 
-        for(int i = 0; i < name.length; i++){
-            OppEle item = new OppEle();
+        mAdapterProject = new AdapterProject(getContext(), R.layout.row_item_opp, mListProject);
+        mLv_myProject.setAdapter(mAdapterProject);
 
-            item.setName(name[i]);
-            item.setContents(contents[i]);
-            item.setMinute(minute[i]);
-            item.setAva(img[i]);
-
-            listOpp.add(item);
-
-        }
-
-        lv_opp = (ListView) view.findViewById(R.id.lv_opp_fragment);
-        OppAdapter adapter = new OppAdapter(getContext(), R.layout.row_item_opp, listOpp);
-        lv_opp.setAdapter(adapter);
-
-        lv_opp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mLv_myProject.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getContext(), "postion is: " + position, Toast.LENGTH_SHORT).show();
             }
         });
 
+        new GetProjectItem().execute(Models.URL_GET_PROJECT_ITEM, "admin");
+
+        if (mListProjectTemp.size() > mListProject.size()) {
+            mListProject.addAll(mListProjectTemp);
+            mAdapterProject.notifyDataSetChanged();
+        }
+
         return view;
     }
+
+    private class GetProjectItem extends AsyncTask<String, String, Void> {
+
+        @Override
+        protected Void doInBackground(String... params) {
+            String temp = params[0] + params[1];
+            String result = new MyServices().get(temp, null);
+            publishProgress(result);
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            super.onProgressUpdate(values);
+            String s = values[0].substring(values[0].indexOf("{"));
+            MGetProject mGetProject = new Gson().fromJson(s, MGetProject.class);
+            mListProjectTemp.clear();
+            mListProjectTemp.addAll(mGetProject.getData());
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+    }
+
+
 }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:orientation="horizontal"
+    android:padding="7dp">
+
+    <ImageView
+        android:id="@+id/img_mess_user_ava"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/e" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:id="@+id/tv_mess_user"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Duong" />
+
+        <TextView
+            android:id="@+id/tv_last_mess"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="latest mess" />
+    </LinearLayout>
+</LinearLayout>
