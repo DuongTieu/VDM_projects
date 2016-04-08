@@ -37,8 +37,9 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SendMessActivity"></activity>
-        <activity android:name=".activities.LayoutMessageActivity"></activity>
+        <activity android:name=".activities.SendMessActivity" />
+        <activity android:name=".activities.LayoutMessageActivity" />
+        <activity android:name=".activities.TestNotifiActivity"></activity>
     </application>
 
 </manifest>

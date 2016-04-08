@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void run() {
                 super.run();
-                SystemClock.sleep(500);
+                SystemClock.sleep(200);
                 onLoginSuccess();
                 hideProgressDialog();
             }
