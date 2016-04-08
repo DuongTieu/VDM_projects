@@ -12,28 +12,29 @@ import com.pubnub.api.Pubnub;
 import com.pubnub.api.PubnubError;
 import com.pubnub.api.PubnubException;
 
+import java.util.ArrayList;
+
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.models.DGetProject;
 import duong.tieu.vdmproject.models.DMessages;
+import duong.tieu.vdmproject.models.Models;
 
 public class TestNotifiActivity extends AppCompatActivity {
 
 
-    private static final String PUBLIC_KEY = "pub-c-470b0c62-1d29-4905-ad3d-10e41ecae909";
-    private static final String SUBSCRIBE_KEY = "sub-c-047ca2dc-fbc7-11e5-861b-02ee2ddab7fe";
-    private static final String SECRET_KEY = "sec-c-NmIyOTA3NTMtYTY1Yi00Nzc2LWI1MmItOGQ2MjA0OGNkZjEy";
     private String mUser;
     private String mJson;
     private String mPubChannel;
 
     private Pubnub mPubnub = new Pubnub(
-            PUBLIC_KEY,  // PUBLISH_KEY   (Optional, supply "" to disable)
-            SUBSCRIBE_KEY,  // SUBSCRIBE_KEY (Required)
-            SECRET_KEY,      // SECRET_KEY    (Optional, supply "" to disable)
+            Models.PUBLIC_KEY,  // PUBLISH_KEY   (Optional, supply "" to disable)
+            Models.SUBSCRIBE_KEY,  // SUBSCRIBE_KEY (Required)
+            Models.SECRET_KEY,      // SECRET_KEY    (Optional, supply "" to disable)
             "",      // CIPHER_KEY    (Optional, supply "" to disable)
             false    // SSL_ON?
     );
 
+    private ArrayList<String> mListString = new ArrayList<>();
     private Callback mCallback;
 
     private DMessages messages;
@@ -90,9 +91,11 @@ public class TestNotifiActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         addEvents();
 
+        for (String string : mListString) {
+            Log.i("tag", string);
+        }
     }
 
     private String createMessages() {
@@ -127,8 +130,7 @@ public class TestNotifiActivity extends AppCompatActivity {
     }
 
     public void setList(String list) {
-        this.mJson = list;
-        messages = new Gson().fromJson(mJson, DMessages.class);
+        mListString.add(list);
     }
 
     private class Events implements View.OnClickListener {
@@ -152,8 +154,6 @@ public class TestNotifiActivity extends AppCompatActivity {
                     super.errorCallback(channel, error);
                 }
             });
-
-            Log.i("Tag", mJson);
         }
     }
 }

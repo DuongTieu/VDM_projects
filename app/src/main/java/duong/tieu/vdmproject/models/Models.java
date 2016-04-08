@@ -105,4 +105,11 @@ public class Models {
     public static final int MESSAGE_RECEIVE = 1;
     public static final String CHANNEL_ = "vsi_private_chat_";
     public static final String DATA = "DATA";
+    public static final String PACKAGE = "PACKAGE";
+
+    public static final String PUBLIC_KEY = "pub-c-470b0c62-1d29-4905-ad3d-10e41ecae909";
+    public static final String SUBSCRIBE_KEY = "sub-c-047ca2dc-fbc7-11e5-861b-02ee2ddab7fe";
+    public static final String SECRET_KEY = "sec-c-NmIyOTA3NTMtYTY1Yi00Nzc2LWI1MmItOGQ2MjA0OGNkZjEy";
+
+
 }

@@ -1,13 +1,13 @@
 package duong.tieu.vdmproject.activities;
 
-import android.accounts.Account;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +21,7 @@ import com.pubnub.api.PubnubException;
 import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
-import duong.tieu.vdmproject.fragment.ContactsFragment;
-import duong.tieu.vdmproject.fragment.MessFragment;
+import duong.tieu.vdmproject.models.DGetUser;
 import duong.tieu.vdmproject.models.Models;
 
 /**
@@ -34,49 +32,35 @@ public class MessageActivity extends AppCompatActivity {
 
     private Button mBtSendMessages;
     private EditText mEdSendMessages;
-    private String mEmailReceive;
-    private String emailSend;
-    private String emailReceive;
-    private Account mAccount;
-    private ArrayList<String> mListString = new ArrayList<>();
     private ArrayAdapter<String> mAdapter;
-
-    private String mUser;
+    private String mUserReceive;
     private String mSubChannel;
     private String mPubChannel;
 
-    private static final String PUBLIC_KEY = "pub-c-470b0c62-1d29-4905-ad3d-10e41ecae909";
-    private static final String SUBSCRIBE_KEY = "sub-c-047ca2dc-fbc7-11e5-861b-02ee2ddab7fe";
-    private static final String SECRET_KEY = "sec-c-NmIyOTA3NTMtYTY1Yi00Nzc2LWI1MmItOGQ2MjA0OGNkZjEy";
+    private ArrayList<String> mListString = new ArrayList<>();
+    private ListView mLvMessages;
 
 
     private Pubnub mPubnub = new Pubnub(
-            PUBLIC_KEY,  // PUBLISH_KEY   (Optional, supply "" to disable)
-            SUBSCRIBE_KEY,  // SUBSCRIBE_KEY (Required)
-            SECRET_KEY,      // SECRET_KEY    (Optional, supply "" to disable)
+            Models.PUBLIC_KEY,  // PUBLISH_KEY   (Optional, supply "" to disable)
+            Models.SUBSCRIBE_KEY,  // SUBSCRIBE_KEY (Required)
+            Models.SECRET_KEY,      // SECRET_KEY    (Optional, supply "" to disable)
             "",      // CIPHER_KEY    (Optional, supply "" to disable)
             false    // SSL_ON?
     );
 
     private Callback mCallback;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mess);
 
-//        viewPager = (ViewPager) findViewById(R.id.viewpager);
-//        setupViewPager(viewPager);
-//
-//        tabLayout = (TabLayout) findViewById(R.id.tabs);
-//        tabLayout.setupWithViewPager(viewPager);
+        initWidgets();
+        getInitData();
 
         mSubChannel = Models.CHANNEL_ + LoginActivity.mUsername;
-        mPubChannel = Models.CHANNEL_ + mUser;
-        Log.i("Tag", mSubChannel + "");
-        Log.i("Tag", mPubChannel + "");
+        mPubChannel = Models.CHANNEL_ + mUserReceive;
 
         mCallback = new Callback() {
             @Override
@@ -123,36 +107,42 @@ public class MessageActivity extends AppCompatActivity {
         } catch (PubnubException e) {
             e.printStackTrace();
         }
-
-        initWidgets();
-
-
     }
 
     private void initWidgets() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tbMessages);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setTitle(mUser);
+        getSupportActionBar().setTitle(mUserReceive);
 
-        ListView mLvListMessages = (ListView) findViewById(R.id.lvListMessages);
+        mLvMessages = (ListView) findViewById(R.id.lvListMessages);
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mListString);
-
-        mLvListMessages.setAdapter(mAdapter);
+        mLvMessages.setAdapter(mAdapter);
         mBtSendMessages = (Button) findViewById(R.id.btSendMessage);
         mEdSendMessages = (EditText) findViewById(R.id.edSendMessage);
     }
 
+    // get data from contacts fragment
+    private void getInitData() {
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MessFragment(), "Tin nhắn");
-        adapter.addFragment(new ContactsFragment(), "Danh bạ");
-        viewPager.setAdapter(adapter);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra(Models.PACKAGE);
+        DGetUser dGetUser = (DGetUser) bundle.getSerializable(Models.DATA);
+        if (dGetUser != null) {
+            mUserReceive = dGetUser.getUsername();
+        }
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onContextItemSelected(item);
     }
 
     @Override
@@ -164,5 +154,19 @@ public class MessageActivity extends AppCompatActivity {
     public void setList(String list) {
         mListString.add(list);
         mAdapter.notifyDataSetChanged();
+    }
+
+    private class Events implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.btSendMessage){
+                onClickSendMessages();
+            }
+        }
+
+        private void onClickSendMessages() {
+
+        }
     }
 }

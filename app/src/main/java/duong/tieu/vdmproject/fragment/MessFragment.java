@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.activities.SendMessActivity;
+import duong.tieu.vdmproject.activities.MessageActivity;
 import duong.tieu.vdmproject.adapter.MessAdapter;
 import duong.tieu.vdmproject.models.MessEle;
 
@@ -59,7 +59,7 @@ public class MessFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent send_mess = new Intent(getActivity().getBaseContext(), SendMessActivity.class);
+                Intent send_mess = new Intent(getActivity().getBaseContext(), MessageActivity.class);
                 Bundle data = new Bundle();
                 data.putInt("position", position);
                 send_mess.putExtra("user_position", data);

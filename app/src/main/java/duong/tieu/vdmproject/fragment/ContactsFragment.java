@@ -1,5 +1,6 @@
 package duong.tieu.vdmproject.fragment;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,11 +16,11 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.activities.NewsActivity;
+import duong.tieu.vdmproject.activities.MessageActivity;
 import duong.tieu.vdmproject.adapter.AdapterUser;
 import duong.tieu.vdmproject.models.DGetUser;
 import duong.tieu.vdmproject.models.MGetUser;
-import duong.tieu.vdmproject.notifications.Notifications;
+import duong.tieu.vdmproject.models.Models;
 import duong.tieu.vdmproject.services.MyServices;
 
 /**
@@ -33,6 +34,7 @@ public class ContactsFragment extends Fragment {
     private ArrayList<DGetUser> mListUser = new ArrayList<>();
     private AdapterUser mAdapter;
     private ListView mLvListUser;
+    private String mUserReceive;
 
     public ContactsFragment() {
     }
@@ -52,17 +54,27 @@ public class ContactsFragment extends Fragment {
         mAdapter = new AdapterUser(getActivity(), R.layout.item_user, mListUser);
         mLvListUser.setAdapter(mAdapter);
 
-
-        mLvListUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                new Notifications(getActivity().getBaseContext(),
-                        NewsActivity.class, "Ban moi nan vao 1 item(change):  ", " vi tri la " + position).addNotification();
-            }
-        });
+        addEvents();
         return view;
     }
 
+    private void addEvents() {
+
+        mLvListUser.setOnItemClickListener(new Events());
+    }
+
+    private class Events implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            mUserReceive = mListUser.get(position).getUsername();
+            Intent intent = new Intent(getActivity(), MessageActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(Models.DATA, mListUser.get(position));
+            intent.putExtra(Models.PACKAGE, bundle);
+            startActivity(intent);
+        }
+    }
 
     private class GetAllUser extends AsyncTask<String, String, String> {
 

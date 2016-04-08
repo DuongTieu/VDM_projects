@@ -7,28 +7,22 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
-
-import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.adapter.ViewPagerAdapter;
 import duong.tieu.vdmproject.fragment.InterestFragment;
 import duong.tieu.vdmproject.fragment.MyProjectFragment;
 import duong.tieu.vdmproject.fragment.OppFragment;
-import duong.tieu.vdmproject.models.DGetProject;
 
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private BottomBar mBottomBar;
-
-    private ArrayList<DGetProject> mListProjects = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,31 +76,21 @@ public class MainActivity extends AppCompatActivity {
 
         switch (menuItemId) {
             case R.id.bb_menu_recents:
-                //Todo
                 break;
             case R.id.bb_menu_favorites:
-                //Todo
                 break;
             case R.id.bb_menu_nearby:
-                //Todo
-                //go to MainActivity
                 Intent mess = new Intent(this, LayoutMessageActivity.class);
                 startActivity(mess);
-
-                Log.d("test main", "start activity");
                 break;
             case R.id.bb_menu_friends:
-                //Todo
                 break;
             case R.id.bb_menu_food:
-                //Todo
                 break;
         }
 
         if (isReselection) {
-            //Todo
         }
-
         return message;
     }
 
@@ -116,6 +100,5 @@ public class MainActivity extends AppCompatActivity {
 
         mBottomBar.onSaveInstanceState(outState);
     }
-
 }
 
