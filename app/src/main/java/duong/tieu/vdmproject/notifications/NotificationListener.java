@@ -4,8 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
-import duong.tieu.vdmproject.activities.MainActivity;
-import duong.tieu.vdmproject.activities.MessageActivity;
+import duong.tieu.vdmproject.activities.NotNow;
 import duong.tieu.vdmproject.models.DGetProject;
 import duong.tieu.vdmproject.models.DMessages;
 import duong.tieu.vdmproject.models.DNotification;
@@ -45,7 +44,8 @@ public class NotificationListener {
 
         int page = 0;
         int id  = 0;
-        String title = parseJson.getUser_name() + " " + parseJson.getTitle();
+        String title =  parseJson.getTitle();
+//        String title = parseJson.getUser_name() + " " + parseJson.getTitle();
         String content = parseJson.getContent();
 
         int n = 0;
@@ -77,7 +77,7 @@ public class NotificationListener {
             case 1:
                 System.out.println("có 1 dự án quan tâm mới");
                 new Notifications(mContext,
-                        MainActivity.class,
+                        NotNow.class,
                         title,
                         " " + content,
                         mJson,
@@ -88,7 +88,7 @@ public class NotificationListener {
             case 2:
                 System.out.println("thích dự án bạn quan tâm mới");
                 new Notifications(mContext,
-                        MainActivity.class,
+                        NotNow.class,
                         title,
                         " " + content,
                         mJson,
@@ -99,7 +99,7 @@ public class NotificationListener {
             case 3:
                 System.out.println("Comment dụ án bạn quan tâm");
                 new Notifications(mContext,
-                        MainActivity.class,
+                        NotNow.class,
                         title,
                         " " + content,
                         mJson,
@@ -110,7 +110,7 @@ public class NotificationListener {
             case 4:
                 System.out.println("quan tâm dụ án bạn quan tâm");
                 new Notifications(mContext,
-                        MainActivity.class,
+                        NotNow.class,
                         title,
                         " " + content,
                         mJson,
@@ -128,7 +128,7 @@ public class NotificationListener {
             case 1:
                     System.out.println("có 1 dự án liên quan mới");
                     new Notifications(mContext,
-                            MainActivity.class,
+                            NotNow.class,
                             title,
                             " " + content,
                             mJson,
@@ -139,7 +139,7 @@ public class NotificationListener {
             case 2:
                 System.out.println("Lượt thích dự án");
                 new Notifications(mContext,
-                        MainActivity.class,
+                        NotNow.class,
                         title,
                         " " + content,
                         mJson,
@@ -150,7 +150,7 @@ public class NotificationListener {
             case 3:
                 System.out.println("Lượt quan tam dự án");
                 new Notifications(mContext,
-                        MainActivity.class,
+                        NotNow.class,
                         title,
                         " " + content,
                         mJson,
@@ -161,7 +161,7 @@ public class NotificationListener {
             case 4:
                 System.out.println("Lượt comment dự án");
                 new Notifications(mContext,
-                        MainActivity.class,
+                        NotNow.class,
                         title,
                         " " + content,
                         mJson,
@@ -175,7 +175,7 @@ public class NotificationListener {
     private void analyzeSuppot(String content, String title, String mJson) {
         System.out.println("có 1 yêu cầu hỗ trợ");
         new Notifications(mContext,
-                MainActivity.class,
+                NotNow.class,
                 title,
                 " " + content,
                 mJson,
@@ -188,7 +188,7 @@ public class NotificationListener {
     private void analyzeMessage(String content,String title, String mJson) {
         System.out.println("có 1 tin nhắn mới");
         new Notifications(mContext,
-                MessageActivity.class,
+                NotNow.class,
                 title,
                 " " + content,
                 mJson,

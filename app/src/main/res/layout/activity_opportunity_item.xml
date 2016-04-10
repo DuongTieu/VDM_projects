@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp">
+    
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/a"
+        android:id="@+id/img_activity_opportunity_item"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_toRightOf="@+id/img_activity_opportunity_item"
+        android:layout_toEndOf="@+id/img_activity_opportunity_item"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:gravity="center_vertical"
+            android:text="đây là title"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:id="@+id/tv_activity_opportunity_item_user_name"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:gravity="center_vertical"
+            android:text="đây là title"
+            android:textColor="#303030"
+            android:textSize="16sp"
+            android:layout_weight="1"
+            android:id="@+id/tv_activity_opportunity_item_time" />
+        
+    </LinearLayout>
+    
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/img_activity_opportunity_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="đây là content"
+        android:id="@+id/tv_activity_opportunity_content" />
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+
+            android:id="@+id/btn_opp_activity_care"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#e2f4f4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Quan tam"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_opp_activity_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#e2f4f4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Huy"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

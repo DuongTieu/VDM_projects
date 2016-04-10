@@ -1,5 +1,6 @@
 package duong.tieu.vdmproject.fragment;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,13 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.activities.LayoutOpportunityItem;
 import duong.tieu.vdmproject.adapter.AdapterProject;
 import duong.tieu.vdmproject.models.DGetProject;
 import duong.tieu.vdmproject.models.MGetProject;
@@ -44,7 +45,14 @@ public class InterestFragment extends Fragment {
         mLV_interst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "postion is: " + position, Toast.LENGTH_SHORT).show();
+
+                Intent senData = new Intent(getActivity(), LayoutOpportunityItem.class);
+                Bundle data = new Bundle();
+                data.putString("userName", mListProject.get(position).getTitle());
+                data.putString("time", mListProject.get(position).getFrom_date());
+                data.putString("content", mListProject.get(position).getContent());
+                senData.putExtra("fromOppFragment", data);
+                startActivity(senData);
             }
         });
 

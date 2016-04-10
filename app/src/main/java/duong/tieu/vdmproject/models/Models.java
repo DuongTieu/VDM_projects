@@ -127,4 +127,7 @@ public class Models {
     public static final String CHANNEL_NOTIFICATION = "vsi_group_chanel_notification";
     public static final String DATA = "DATA";
     public static final String PACKAGE = "PACKAGE";
+    public static final String PROJECT_ID = "project_id";
+    public static final String URL_GET_SUPPORT =
+            "http://vsi.vietitech.com/api/support_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getSupport";
 }

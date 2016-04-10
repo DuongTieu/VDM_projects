@@ -18,8 +18,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.activities.LayoutNewsActivity;
 import duong.tieu.vdmproject.activities.MainActivity;
+import duong.tieu.vdmproject.activities.LayoutOpportunityItem;
 import duong.tieu.vdmproject.adapter.AdapterProject;
 import duong.tieu.vdmproject.models.DGetProject;
 import duong.tieu.vdmproject.models.MGetProject;
@@ -49,15 +49,19 @@ public class OppFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent senData = new Intent(getActivity(), LayoutNewsActivity.class);
-//                Bundle data = new Bundle();
-//                data.putInt("position", position);
-//                senData.putExtra("user_position", data);
+                Intent senData = new Intent(getActivity(), LayoutOpportunityItem.class);
+                Bundle data = new Bundle();
+                data.putString("userName", mListProject.get(position).getTitle());
+                data.putString("time", mListProject.get(position).getFrom_date());
+                data.putString("content", mListProject.get(position).getContent());
+                senData.putExtra("fromOppFragment", data);
                 startActivity(senData);
             }
         });
 
         new GetProject().execute(Models.URL_GET_PROJECT, "admin");
+
+
         verify = ((MainActivity)getActivity()).getVerify();
         if ( verify== Models.KEYLOGIN){
             Log.i("Tag", verify + "");
@@ -73,6 +77,8 @@ public class OppFragment extends Fragment {
             ((MainActivity)getActivity()).setVerify(0);
             Log.e("opp", "sdf");
         }
+
+
         return view;
     }
 

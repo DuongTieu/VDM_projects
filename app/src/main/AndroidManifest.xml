@@ -25,6 +25,9 @@
         <activity android:name=".activities.LayoutMessageActivity" />
         <activity android:name=".activities.TestNotifiActivity"/>
         <activity android:name=".activities.ViewItemNewActivity"/>
+        <activity android:name=".activities.NotNow"/>
+        <activity android:name=".activities.LayoutOpportunityItem"/>
+        <activity android:name=".activities.SupportActivity"/>
         <receiver android:name=".broadcast.BroadcastNotification">
            <intent-filter>
                <action android:name="com.notification.chat"/>

@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.bb_menu_friends:
                 //Todo
-                Intent testNotifi = new Intent(this, TestNotifiActivity.class);
+                Intent testNotifi = new Intent(this, SupportActivity.class);
                 startActivity(testNotifi);
 
                 break;
