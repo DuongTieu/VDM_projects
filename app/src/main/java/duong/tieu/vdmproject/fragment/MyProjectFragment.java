@@ -29,7 +29,6 @@ public class MyProjectFragment extends Fragment {
     AdapterProject mAdapterProject;
     private ListView mLv_myProject;
     private ArrayList<DGetProject> mListProject = new ArrayList<>();
-    private ArrayList<DGetProject> mListProjectTemp = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,11 +46,6 @@ public class MyProjectFragment extends Fragment {
         });
 
         new GetProjectItem().execute(Models.URL_GET_PROJECT_ITEM, "admin");
-
-        if (mListProjectTemp.size() > mListProject.size()) {
-            mListProject.addAll(mListProjectTemp);
-            mAdapterProject.notifyDataSetChanged();
-        }
 
         return view;
     }
@@ -71,8 +65,9 @@ public class MyProjectFragment extends Fragment {
             super.onProgressUpdate(values);
             String s = values[0].substring(values[0].indexOf("{"));
             MGetProject mGetProject = new Gson().fromJson(s, MGetProject.class);
-            mListProjectTemp.clear();
-            mListProjectTemp.addAll(mGetProject.getData());
+            mListProject.clear();
+            mListProject.addAll(mGetProject.getData());
+            mAdapterProject.notifyDataSetChanged();
         }
 
         @Override

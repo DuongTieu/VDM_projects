@@ -1,8 +1,10 @@
 package duong.tieu.vdmproject.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +18,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.activities.NewsActivity;
+import duong.tieu.vdmproject.activities.LayoutNewsActivity;
+import duong.tieu.vdmproject.activities.MainActivity;
 import duong.tieu.vdmproject.adapter.AdapterProject;
 import duong.tieu.vdmproject.models.DGetProject;
 import duong.tieu.vdmproject.models.MGetProject;
@@ -30,10 +33,11 @@ public class OppFragment extends Fragment {
     AdapterProject mAdapterProject;
     private ListView mLv_opp;
     private ArrayList<DGetProject> mListProject = new ArrayList<>();
-    private ArrayList<DGetProject> mListProjectTemp = new ArrayList<>();
 
+    private ProgressDialog mProgressDialog;
+    private int verify;
     @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_opp, container, false);
         mLv_opp = (ListView) view.findViewById(R.id.lv_opp_fragment);
 
@@ -45,28 +49,34 @@ public class OppFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent senData = new Intent(getActivity(), NewsActivity.class);
-                Bundle data = new Bundle();
-                data.putInt("position", position);
-                senData.putExtra("user_position", data);
+                Intent senData = new Intent(getActivity(), LayoutNewsActivity.class);
+//                Bundle data = new Bundle();
+//                data.putInt("position", position);
+//                senData.putExtra("user_position", data);
                 startActivity(senData);
             }
         });
 
         new GetProject().execute(Models.URL_GET_PROJECT, "admin");
+        verify = ((MainActivity)getActivity()).getVerify();
+        if ( verify== Models.KEYLOGIN){
+            Log.i("Tag", verify + "");
+            showProgressDialog();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    SystemClock.sleep(2000);
+                    hideProgressDialog();
+                }
+            }).start();
 
-        if (mListProjectTemp.size() > mListProject.size()) {
-            mListProject.addAll(mListProjectTemp);
-            mAdapterProject.notifyDataSetChanged();
+            ((MainActivity)getActivity()).setVerify(0);
+            Log.e("opp", "sdf");
         }
-
         return view;
     }
 
-
     private class GetProject extends AsyncTask<String, String, String> {
-
-//        private Interfaces mInterfaces;
 
         @Override
         protected String doInBackground(String... params) {
@@ -82,11 +92,26 @@ public class OppFragment extends Fragment {
             s = s.substring(s.indexOf("{"));
             MGetProject mGetProject = new Gson().fromJson(s, MGetProject.class);
             Log.i("count ", mGetProject.getData().size() + "");
-            mListProjectTemp.clear();
-            mListProjectTemp.addAll(mGetProject.getData());
-            Log.e("Size ", mListProjectTemp.size() + "");
+            mListProject.clear();
+            mListProject.addAll(mGetProject.getData());
+            mAdapterProject.notifyDataSetChanged();
+            Log.e("Size ", mListProject.size() + "");
         }
     }
 
 
+    private void showProgressDialog(){
+        if (mProgressDialog == null){
+            mProgressDialog = new ProgressDialog(getActivity());
+            mProgressDialog.setTitle("Loading");
+            mProgressDialog.setMessage("Wait Loading data");
+        }
+        mProgressDialog.show();
+    }
+
+    private void hideProgressDialog(){
+        if (mProgressDialog != null && mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
+        }
+    }
 }

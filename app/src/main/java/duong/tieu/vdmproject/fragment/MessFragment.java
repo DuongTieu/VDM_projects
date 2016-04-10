@@ -1,6 +1,5 @@
 package duong.tieu.vdmproject.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import duong.tieu.vdmproject.R;
-import duong.tieu.vdmproject.activities.MessageActivity;
 import duong.tieu.vdmproject.adapter.MessAdapter;
 import duong.tieu.vdmproject.models.MessEle;
 
@@ -59,11 +57,11 @@ public class MessFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent send_mess = new Intent(getActivity().getBaseContext(), MessageActivity.class);
-                Bundle data = new Bundle();
-                data.putInt("position", position);
-                send_mess.putExtra("user_position", data);
-                startActivity(send_mess);
+//                Intent send_mess = new Intent(getActivity().getBaseContext(), MessageActivity.class);
+//                Bundle data = new Bundle();
+//                data.putInt("message", position);
+//                startActivity(send_mess);
+//                send_mess.putExtra("user_position", data);
 
             }
         });

@@ -82,8 +82,8 @@ public class Models {
             "http://vsi.vietitech.com/api/project_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getProjectCare&username=";
     public static final String URL_GET_PROJECT_ITEM =
             "http://vsi.vietitech.com/api/project_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getProjectItme&username=";
-
-
+    public static final String URL_GET_NEWS_VSI_VIP =
+            "http://vsi.vietitech.com/api/news_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getNewsVip&username=";
     // tao bang co hoi
     public static final String TABLE_PROJECT = "tbl_projects";
     public static final String ID_PROJECT = "id";
@@ -103,13 +103,28 @@ public class Models {
     public static final String ISACTIVE_PROJECT = "isactive";
     public static final int MESSAGES_SEND = 0;
     public static final int MESSAGE_RECEIVE = 1;
-    public static final String CHANNEL_ = "vsi_private_chat_";
-    public static final String DATA = "DATA";
-    public static final String PACKAGE = "PACKAGE";
+
+    public static final int SEND_MESSAGE_METHOD = 1;
+    public static final int RELATED_PROJECT_METHOD = 2;
+    public static final int CARE_PROJECT_METHOD = 3;
+    public static final int SUPPORT_METHOD = 4;
+    public static final int NEW_PROJECT_TYPE = 1;
+    public static final int NEW_SUPPORT_TYPE = 5;
+    public static final int NEW_LIKE_TYPE = 2;
+    public static final int NEW_COMMENT_TYPE = 3;
+    public static final int NEW_CARE_TYPE = 4;
+
+    public static final String VERIFY = "VERIFY";
+    public static final int KEYLOGIN = 1;
+
+    public static String URL_NEW_VSI =
+            "http://vsi.vietitech.com/api/news_api.php?publicKey=5628acfce494c53189505f337bfa6870&action=getNewsVsi&username=";
 
     public static final String PUBLIC_KEY = "pub-c-470b0c62-1d29-4905-ad3d-10e41ecae909";
     public static final String SUBSCRIBE_KEY = "sub-c-047ca2dc-fbc7-11e5-861b-02ee2ddab7fe";
     public static final String SECRET_KEY = "sec-c-NmIyOTA3NTMtYTY1Yi00Nzc2LWI1MmItOGQ2MjA0OGNkZjEy";
-
-
+    public static final String CHANNEL_ = "vsi_private_chat_";
+    public static final String CHANNEL_NOTIFICATION = "vsi_group_chanel_notification";
+    public static final String DATA = "DATA";
+    public static final String PACKAGE = "PACKAGE";
 }

@@ -11,36 +11,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.LoginActivity">
-
-        </activity>
-        <activity android:name=".activities.SignupActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.MessageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.NewsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.LayoutMessageActivity" />
-        <activity android:name=".activities.TestNotifiActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.SignupActivity"/>
+        <activity android:name=".activities.MainActivity"/>
+        <activity android:name=".activities.MessageActivity"/>
+        <activity android:name=".activities.LayoutNewsActivity"/>
+        <activity android:name=".activities.SendMessActivity" />
+        <activity android:name=".activities.LayoutMessageActivity" />
+        <activity android:name=".activities.TestNotifiActivity"/>
+        <activity android:name=".activities.ViewItemNewActivity"/>
+        <receiver android:name=".broadcast.BroadcastNotification">
+           <intent-filter>
+               <action android:name="com.notification.chat"/>
+           </intent-filter>
+        </receiver>
+        <service
+            android:name=".services.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

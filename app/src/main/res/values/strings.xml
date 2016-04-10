@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VDM project</string>
+    <string name="app_name">VSI</string>
     <string name="login">Login</string>
     <string name="question">No account yet? Create one</string>
     <string name="message_send">Messages</string>

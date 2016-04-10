@@ -12,29 +12,29 @@ import com.pubnub.api.Pubnub;
 import com.pubnub.api.PubnubError;
 import com.pubnub.api.PubnubException;
 
-import java.util.ArrayList;
-
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.models.DGetProject;
 import duong.tieu.vdmproject.models.DMessages;
-import duong.tieu.vdmproject.models.Models;
+import duong.tieu.vdmproject.notifications.NotificationListener;
 
 public class TestNotifiActivity extends AppCompatActivity {
 
 
+    private static final String PUBLIC_KEY = "pub-c-470b0c62-1d29-4905-ad3d-10e41ecae909";
+    private static final String SUBSCRIBE_KEY = "sub-c-047ca2dc-fbc7-11e5-861b-02ee2ddab7fe";
+    private static final String SECRET_KEY = "sec-c-NmIyOTA3NTMtYTY1Yi00Nzc2LWI1MmItOGQ2MjA0OGNkZjEy";
     private String mUser;
     private String mJson;
     private String mPubChannel;
 
     private Pubnub mPubnub = new Pubnub(
-            Models.PUBLIC_KEY,  // PUBLISH_KEY   (Optional, supply "" to disable)
-            Models.SUBSCRIBE_KEY,  // SUBSCRIBE_KEY (Required)
-            Models.SECRET_KEY,      // SECRET_KEY    (Optional, supply "" to disable)
+            PUBLIC_KEY,  // PUBLISH_KEY   (Optional, supply "" to disable)
+            SUBSCRIBE_KEY,  // SUBSCRIBE_KEY (Required)
+            SECRET_KEY,      // SECRET_KEY    (Optional, supply "" to disable)
             "",      // CIPHER_KEY    (Optional, supply "" to disable)
             false    // SSL_ON?
     );
 
-    private ArrayList<String> mListString = new ArrayList<>();
     private Callback mCallback;
 
     private DMessages messages;
@@ -91,11 +91,9 @@ public class TestNotifiActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
         addEvents();
 
-        for (String string : mListString) {
-            Log.i("tag", string);
-        }
     }
 
     private String createMessages() {
@@ -114,26 +112,41 @@ public class TestNotifiActivity extends AppCompatActivity {
 
     private String createProjectItem() {
         DGetProject dGetProject = new DGetProject();
+
         dGetProject.setId("1");
         dGetProject.setContent("slkfsakl;fjsaf");
         dGetProject.setCode("sjkfskajfaskl");
         dGetProject.setFrom_date("safklnslakfmnskl;a");
+        dGetProject.setCar_id("đây là car id");
+        dGetProject.setLike("10000");
+        dGetProject.setUnlike("90000");
+        dGetProject.setC_comment("sdkf");
+        dGetProject.setUsername("duong");
+        dGetProject.setIsactive("true");
+        dGetProject.setCdate("chn");
+        dGetProject.setEnd_date("sdkfj");
+        dGetProject.setEnd_date("45");
+        dGetProject.setTitle("bố của bạn");
+        dGetProject.setIntro("ch");
+
         String json = new Gson().toJson(dGetProject);
         return json;
     }
 
     private void addEvents() {
         Button button = (Button) findViewById(R.id.btNotification);
-        final String json = createMessages();
+        final String json = createProjectItem();
         if (button != null)
             button.setOnClickListener(new Events(json));
     }
 
     public void setList(String list) {
-        mListString.add(list);
+        this.mJson = list;
+        messages = new Gson().fromJson(mJson, DMessages.class);
     }
 
     private class Events implements View.OnClickListener {
+
 
         public String string;
 
@@ -147,6 +160,7 @@ public class TestNotifiActivity extends AppCompatActivity {
                 @Override
                 public void successCallback(String channel, Object message) {
                     super.successCallback(channel, message);
+                    new NotificationListener(getBaseContext()).analyze(string);
                 }
 
                 @Override
@@ -154,6 +168,7 @@ public class TestNotifiActivity extends AppCompatActivity {
                     super.errorCallback(channel, error);
                 }
             });
+
         }
-    }
-}
+        }
+        }

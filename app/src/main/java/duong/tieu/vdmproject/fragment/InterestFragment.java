@@ -30,7 +30,6 @@ public class InterestFragment extends Fragment {
     AdapterProject mAdapterProject;
     private ListView mLV_interst;
     private ArrayList<DGetProject> mListProject = new ArrayList<>();
-    private ArrayList<DGetProject> mListProjectTemp = new ArrayList<>();
     private View mView;
 
     @Override
@@ -51,10 +50,6 @@ public class InterestFragment extends Fragment {
 
         new GetProject().execute(Models.URL_GET_PROJECT_CARE, "admin");
 
-        if (mListProjectTemp.size() > mListProject.size()) {
-            mListProject.addAll(mListProjectTemp);
-            mAdapterProject.notifyDataSetChanged();
-        }
 
         return mView;
     }
@@ -75,8 +70,9 @@ public class InterestFragment extends Fragment {
             s = s.substring(s.indexOf("{"));
             MGetProject mGetProject = new Gson().fromJson(s, MGetProject.class);
             Log.i("count ", mGetProject.getData().size() + "");
-            mListProjectTemp.clear();
-            mListProjectTemp.addAll(mGetProject.getData());
+            mListProject.clear();
+            mListProject.addAll(mGetProject.getData());
+            mAdapterProject.notifyDataSetChanged();
         }
     }
 

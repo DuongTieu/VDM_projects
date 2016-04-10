@@ -3,23 +3,23 @@
 
     <item
         android:id="@+id/bb_menu_recents"
-        android:icon="@drawable/ic_recents"
+        android:icon="@drawable/giaothuong"
         android:title="Hợp tác" />
     <item
         android:id="@+id/bb_menu_favorites"
-        android:icon="@drawable/ic_favorites"
+        android:icon="@drawable/bangtin"
         android:title="Bản tin" />
     <item
         android:id="@+id/bb_menu_nearby"
-        android:icon="@drawable/ic_nearby"
+        android:icon="@drawable/tinnhan"
         android:title="Tin nhắn" />
     <item
         android:id="@+id/bb_menu_friends"
-        android:icon="@drawable/ic_friends"
+        android:icon="@drawable/hoptac"
         android:title="Add" />
     <item
         android:id="@+id/bb_menu_food"
-        android:icon="@drawable/ic_restaurants"
+        android:icon="@drawable/more"
         android:title="More" />
 
 </menu>

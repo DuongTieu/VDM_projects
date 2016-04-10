@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -25,6 +26,7 @@ import butterknife.ButterKnife;
 import duong.tieu.vdmproject.R;
 import duong.tieu.vdmproject.models.ILogin;
 import duong.tieu.vdmproject.models.Models;
+import duong.tieu.vdmproject.services.MyService;
 import duong.tieu.vdmproject.services.MyServices;
 
 public class LoginActivity extends AppCompatActivity {
@@ -37,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btLogin;
     @Bind(R.id.tvSignUp)
     TextView tvSignUp;
-
     private ProgressDialog mDialog;
     private boolean isLogin;
 
@@ -56,29 +57,8 @@ public class LoginActivity extends AppCompatActivity {
         tvSignUp.setOnClickListener(new Events());
     }
 
-    private class Events implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.btLogin:
-                    onClickLogin();
-                    break;
-                case R.id.tvSignUp:
-                    onClickSignUp();
-                    break;
-            }
-        }
-
-        private void onClickSignUp() {
-            Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-            startActivity(intent);
-        }
-    }
-
     public void onClickLogin() {
 
-        btLogin.setEnabled(false);
         showProgressDialog();
         new Thread() {
             @Override
@@ -124,6 +104,26 @@ public class LoginActivity extends AppCompatActivity {
         new Login().execute(email, password);
     }
 
+    private class Events implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btLogin:
+                    onClickLogin();
+                    break;
+                case R.id.tvSignUp:
+                    onClickSignUp();
+                    break;
+            }
+        }
+
+        private void onClickSignUp() {
+            Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+            startActivity(intent);
+        }
+    }
+
     private class Login extends AsyncTask<String, Void, String> {
 
         @Override
@@ -144,17 +144,31 @@ public class LoginActivity extends AppCompatActivity {
 
             super.onPostExecute(s);
             s = s.substring(s.indexOf("{"));
+            Log.i("tag", s);
             ILogin iLogin = new Gson().fromJson(s, ILogin.class);
-//            mUsername = iLogin.getData().getUsername();
-            mUsername = "admin";
             isLogin = Boolean.parseBoolean(iLogin.getStatus());
-            Log.i("Tag", mUsername);
-            isLogin = true;
             if (isLogin) {
+                mUsername = edUsername.getText().toString();
                 Intent goMain = new Intent(getBaseContext(), MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt(Models.VERIFY, Models.KEYLOGIN);
+                goMain.putExtra(Models.PACKAGE, bundle);
                 startActivity(goMain);
                 finish();
+            } else {
+                getShowToast("Login Fails");
             }
         }
     }
+    private void getShowToast(String s) {
+        Toast.makeText(LoginActivity.this, s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent(this, MyService.class);
+        startService(intent);
+    }
+
 }

@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,7 +20,9 @@ import com.pubnub.api.PubnubException;
 import java.util.ArrayList;
 
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.adapter.AdapterMessages;
 import duong.tieu.vdmproject.models.DGetUser;
+import duong.tieu.vdmproject.models.DMessages;
 import duong.tieu.vdmproject.models.Models;
 
 /**
@@ -29,17 +30,15 @@ import duong.tieu.vdmproject.models.Models;
  */
 public class MessageActivity extends AppCompatActivity {
 
-
     private Button mBtSendMessages;
-    private EditText mEdSendMessages;
-    private ArrayAdapter<String> mAdapter;
+    private EditText mEdSend;
     private String mUserReceive;
     private String mSubChannel;
     private String mPubChannel;
 
-    private ArrayList<String> mListString = new ArrayList<>();
     private ListView mLvMessages;
-
+    private AdapterMessages mAdapterMessages;
+    private ArrayList<DMessages> mListMessage = new ArrayList<>();
 
     private Pubnub mPubnub = new Pubnub(
             Models.PUBLIC_KEY,  // PUBLISH_KEY   (Optional, supply "" to disable)
@@ -58,6 +57,10 @@ public class MessageActivity extends AppCompatActivity {
 
         initWidgets();
         getInitData();
+        initObject();
+    }
+
+    private void initObject() {
 
         mSubChannel = Models.CHANNEL_ + LoginActivity.mUsername;
         mPubChannel = Models.CHANNEL_ + mUserReceive;
@@ -107,6 +110,15 @@ public class MessageActivity extends AppCompatActivity {
         } catch (PubnubException e) {
             e.printStackTrace();
         }
+
+        DMessages dMessages =
+                new DMessages("0", mUserReceive, LoginActivity.mUsername, "kjsldflsaf", "1233", "0");
+        mListMessage.add(dMessages);
+        dMessages =
+                new DMessages("1", LoginActivity.mUsername, mUserReceive, "sdfjklasfjasl", "565", "1");
+
+        mListMessage.add(dMessages);
+        mAdapterMessages.notifyDataSetChanged();
     }
 
     private void initWidgets() {
@@ -119,10 +131,11 @@ public class MessageActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(mUserReceive);
 
         mLvMessages = (ListView) findViewById(R.id.lvListMessages);
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mListString);
-        mLvMessages.setAdapter(mAdapter);
+        mAdapterMessages = new AdapterMessages(this, mListMessage);
+        mLvMessages.setAdapter(mAdapterMessages);
         mBtSendMessages = (Button) findViewById(R.id.btSendMessage);
-        mEdSendMessages = (EditText) findViewById(R.id.edSendMessage);
+        mEdSend = (EditText) findViewById(R.id.edSendMessage);
+        mBtSendMessages.setOnClickListener(new Events());
     }
 
     // get data from contacts fragment
@@ -135,7 +148,6 @@ public class MessageActivity extends AppCompatActivity {
             mUserReceive = dGetUser.getUsername();
         }
     }
-
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
@@ -152,21 +164,56 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     public void setList(String list) {
-        mListString.add(list);
-        mAdapter.notifyDataSetChanged();
+        DMessages dMessages =
+                new DMessages("0", mUserReceive, LoginActivity.mUsername, list, "1233", "0");
+        mListMessage.add(dMessages);
+        mAdapterMessages.notifyDataSetChanged();
     }
 
-    private class Events implements View.OnClickListener{
+    private class Events implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
-            if (v.getId() == R.id.btSendMessage){
+            if (v.getId() == R.id.btSendMessage) {
                 onClickSendMessages();
             }
         }
 
         private void onClickSendMessages() {
+//            mPubnub.publish(mPubChannel, mEdSend.getText().toString(), new Callback() {
+//                @Override
+//                public void successCallback(String channel, Object message) {
+//                    super.successCallback(channel, message);
+//                    Log.i("Tag", message.toString());
+//                }
+//
+//                @Override
+//                public void errorCallback(String channel, PubnubError error) {
+//                    super.errorCallback(channel, error);
+//                    Log.i("Tag", error.getErrorString());
+//                }
+//            });
 
+            mPubnub.history(mPubChannel, 0, 34234, 100, true, new Callback() {
+                @Override
+                public void successCallback(String channel, Object message) {
+                    super.successCallback(channel, message);
+                    setList(message.toString());
+
+                }
+
+                @Override
+                public void errorCallback(String channel, PubnubError error) {
+                    super.errorCallback(channel, error);
+                }
+            });
+
+            DMessages mMessageSend =
+                    new DMessages("0", LoginActivity.mUsername, mUserReceive, mEdSend.getText().toString(), "1233", "0");
+
+            mListMessage.add(mMessageSend);
+            mAdapterMessages.notifyDataSetChanged();
+            mEdSend.setText("");
         }
     }
 }

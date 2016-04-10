@@ -55,14 +55,13 @@ public class ContactsFragment extends Fragment {
         mLvListUser.setAdapter(mAdapter);
 
         addEvents();
+
         return view;
     }
-
     private void addEvents() {
 
         mLvListUser.setOnItemClickListener(new Events());
     }
-
     private class Events implements AdapterView.OnItemClickListener {
 
         @Override
@@ -75,7 +74,6 @@ public class ContactsFragment extends Fragment {
             startActivity(intent);
         }
     }
-
     private class GetAllUser extends AsyncTask<String, String, String> {
 
         @Override

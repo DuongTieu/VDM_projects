@@ -15,7 +15,7 @@ import duong.tieu.vdmproject.models.MessEle;
 /**
  * Created by duong on 05/04/2016.
  */
-public class MessAdapter  extends ArrayAdapter<MessEle>{
+public class MessAdapter extends ArrayAdapter<MessEle> {
     Context context;
     int res;
     List<MessEle> objects;
@@ -52,6 +52,5 @@ public class MessAdapter  extends ArrayAdapter<MessEle>{
 //        img_user_ava.setImageResource(item.getAva());
 
         return view;
-
     }
 }

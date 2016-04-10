@@ -38,11 +38,6 @@ public class AdapterUser extends ArrayAdapter<DGetUser> {
         this.mListUser = mListUser;
     }
 
-    private class ViewHolder {
-        private ImageView mImgView;
-        private TextView mTvView;
-    }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -122,5 +117,10 @@ public class AdapterUser extends ArrayAdapter<DGetUser> {
                 matrix, false);
 
         return resizedBitmap;
+    }
+
+    private class ViewHolder {
+        private ImageView mImgView;
+        private TextView mTvView;
     }
 }

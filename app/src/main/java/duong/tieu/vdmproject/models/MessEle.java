@@ -6,6 +6,7 @@ package duong.tieu.vdmproject.models;
 public class MessEle {
     private String userName, userText;
     private int ava;
+
     public String getUserName() {
         return userName;
     }
