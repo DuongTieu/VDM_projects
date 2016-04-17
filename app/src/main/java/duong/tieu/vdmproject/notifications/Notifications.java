@@ -16,6 +16,7 @@ import android.support.v4.app.NotificationCompat;
 import com.google.gson.Gson;
 
 import duong.tieu.vdmproject.R;
+import duong.tieu.vdmproject.models.DNotification;
 
 /**
  * Created by duong on 07/04/2016.
@@ -93,12 +94,18 @@ public class Notifications {
         Gson gson = new Gson();
         if(mType == 1){
             //tin nhắn
+            //TODO
         }else if(mType == 2 && mType2 == 1){
             //dự án liên quan - 1 dự án mới
         }else if(mType == 2 && mType2 == 2){
             //dự án liên quan - thích dự án đó
         }else  if(mType == 2 && mType2 == 3){
             //dự án liên quan- comment mới
+            DNotification item = gson.fromJson(mJson, DNotification.class);
+            data.putString("userName", item.getUser_name());
+            data.putString("content", item.getContent());
+            goMain.putExtra("comment", data);
+
         }else  if(mType == 2 && mType2 == 4){
             //dự án liên quan - thêm người quan tâm
         }else if(mType == 3 && mType2 == 1){

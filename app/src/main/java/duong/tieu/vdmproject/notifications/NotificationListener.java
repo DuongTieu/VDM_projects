@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 
 import duong.tieu.vdmproject.activities.NotNow;
+import duong.tieu.vdmproject.activities.SeeCommentActivity;
 import duong.tieu.vdmproject.models.DGetProject;
 import duong.tieu.vdmproject.models.DMessages;
 import duong.tieu.vdmproject.models.DNotification;
@@ -99,7 +100,7 @@ public class NotificationListener {
             case 3:
                 System.out.println("Comment dụ án bạn quan tâm");
                 new Notifications(mContext,
-                        NotNow.class,
+                        SeeCommentActivity.class,
                         title,
                         " " + content,
                         mJson,
