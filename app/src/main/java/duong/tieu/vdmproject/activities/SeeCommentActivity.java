@@ -56,6 +56,7 @@ public class SeeCommentActivity extends AppCompatActivity {
         }
 
 //        nếu ko có comment thì listview sub commnet sẽ ẩn
+
         if (arrSub != null) {
             for (int ii = 0; ii < arrSub.length; ii++) {
                 SeeCommentEle item = new SeeCommentEle();
